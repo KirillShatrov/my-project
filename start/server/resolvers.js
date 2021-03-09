@@ -15,7 +15,7 @@ const getBooks = () => {
 
 module.exports = {
   Query: {
-    books: () => getBooks,
+    products: async () => getBooks,
   },
   // Mutation: {
   //   createProduct: async (_, { product }) => createProduct({ product   })

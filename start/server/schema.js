@@ -6,11 +6,11 @@ const typeDefs = gql`
     author: String!
   }
 
-  type NewBookAddedResponse {
-    success: Boolean!
-    message: String
-    books: Book
-  }
+#   type NewBookAddedResponse {
+#     success: Boolean!
+#     message: String
+#     books: Book
+#   }
 
   input addABook {
     title: String!
@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    books: Book
+    books: [Book]
   }
 
   #   type Mutation {
