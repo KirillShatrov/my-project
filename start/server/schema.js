@@ -1,41 +1,29 @@
 const { gql } = require("apollo-server");
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-]
-
 const typeDefs = gql`
+  type Book {
+    title: String!
+    author: String!
+  }
 
-    type Book {
-        title: String!
-        author: String!
-    }
+  type NewBookAddedResponse {
+    success: Boolean!
+    message: String
+    books: Book
+  }
 
-    type NewBookAddedResponse {
-        success: Boolean!
-        message: String
-        books: [Book]
-    }
+  input addABook {
+    title: String!
+    author: String!
+  }
 
-    input addABook {
-        title: String!
-        author: String!
-    }
+  type Query {
+    books: Book
+  }
 
-    type Query {
-        books: ${books}!
-    }
-
-    type Mutation {
-        addABook(title: String!, author: String!): NewBookAddedResponse!
-    }
+  #   type Mutation {
+  #     addBook(title: String, author: String): Book
+  #   }
 `;
 
 module.exports = typeDefs;
