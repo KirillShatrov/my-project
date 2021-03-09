@@ -2,15 +2,13 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Book {
-    title: String!
-    author: String!
+    title: String
+    author: Author
   }
 
-#   type NewBookAddedResponse {
-#     success: Boolean!
-#     message: String
-#     books: Book
-#   }
+  type Author {
+    name: String
+  }
 
   input addABook {
     title: String!
@@ -21,9 +19,9 @@ const typeDefs = gql`
     books: [Book]
   }
 
-  #   type Mutation {
-  #     addBook(title: String, author: String): Book
-  #   }
+  type Mutation {
+    addBook(title: String, author: String): Book
+  }
 `;
 
 module.exports = typeDefs;

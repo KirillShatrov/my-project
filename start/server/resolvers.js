@@ -1,23 +1,33 @@
 const books = [
   {
     title: "The Awakening",
-    author: "Kate Chopin",
+    author: {
+      name: "Kate Chopin",
+    },
   },
   {
     title: "City of Glass",
-    author: "Paul Auster",
+    author: {
+      name: "Paul Auster",
+    },
   },
 ];
 
-const getBooks = () => {
+const getAllBooks = () => {
   return books;
+};
+
+const addBook = (title, name) => {
+  books.push({ title: title, author: {name: name }});
+  console.log(books);
+  return true;
 };
 
 module.exports = {
   Query: {
-    books: getBooks,
+    books: getAllBooks,
   },
-  // Mutation: {
-  //   createProduct: async (_, { product }) => createProduct({ product   })
-  // }
+  Mutation: {
+    addBook: (props, args) => addBook(args.title, args.author),
+  },
 };
