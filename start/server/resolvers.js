@@ -10,12 +10,12 @@ const books = [
 ];
 
 const getBooks = () => {
-  return Promise.resolve(books);
+  return books;
 };
 
 module.exports = {
   Query: {
-    products: async () => getBooks,
+    books: getBooks,
   },
   // Mutation: {
   //   createProduct: async (_, { product }) => createProduct({ product   })
