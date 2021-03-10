@@ -19,14 +19,16 @@ const getAllBooks = () => {
   return books;
 };
 
-const addBook = (title, name, id) => {
-  books.push({ id: id, title: title, author: {name: name }});
+const addBook = (title, name) => {
+  const newId = books[books.length - 1]. id + 1;
+  books.push({ id: newId, title: title, author: {name: name }});
   console.log(books);
   return true;
 };
 
 const deleteBook = (idToRemove) => {
-  books = books.filter((item) => item.id !== idToRemove);
+  const filteredBooks = books.filter((item) => item.id !== idToRemove);
+  books = filteredBooks;
   console.log(books);
   return true;
 };
@@ -36,7 +38,7 @@ module.exports = {
     books: getAllBooks,
   },
   Mutation: {
-    addBook: (props, args) => addBook(args.title, args.author, args.id),
+    addBook: (props, args) => addBook(args.title, args.author),
     deleteBook: (props, args) => deleteBook(args.id),
   },
 };
