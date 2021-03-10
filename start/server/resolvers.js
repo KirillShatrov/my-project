@@ -20,7 +20,6 @@ const getAllBooks = () => {
 };
 
 const getBookById = (id) => {
-  console.log(id);
   const bookFound = books.find((obj) => obj.id == id);
   console.log(bookFound);
   return bookFound;
@@ -31,6 +30,12 @@ const addBook = (title, name) => {
   books.push({ id: newId, title: title, author: { name: name } });
   console.log(books);
   return true;
+};
+
+const updateABook = (id, title, name) => {
+  books.find((item) => item.id === id).author = { name: name };
+  books.find((item) => item.id === id).title = title;
+  console.log(books);
 };
 
 const deleteBook = (idToRemove) => {
@@ -48,5 +53,6 @@ module.exports = {
   Mutation: {
     addBook: (props, args) => addBook(args.title, args.author),
     deleteBook: (props, args) => deleteBook(args.id),
+    updateABook: (props, args) => updateABook(args.id, args.title, args.author),
   },
 };

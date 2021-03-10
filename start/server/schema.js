@@ -20,6 +20,12 @@ const typeDefs = gql`
     id: Int!
   }
 
+  input updateABook {
+    id: Int!
+    title: String!
+    author: String!
+  }
+
   type Query {
     books: [Book]
     getBookById(id: Int): Book
@@ -28,6 +34,7 @@ const typeDefs = gql`
   type Mutation {
     addBook(title: String, author: String): Book
     deleteBook(id: Int): Book
+    updateABook(id: Int, title: String, author: String): Book
   }
 `;
 

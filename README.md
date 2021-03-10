@@ -34,3 +34,13 @@ mutation {
     id
   }
 }
+
+# Mutation to update a book:
+mutation {
+  updateABook(id:2, title: "Empire of the Ants123", author: "Bernard Werber123") {
+    title
+    author {
+      name
+    }
+  }
+}
