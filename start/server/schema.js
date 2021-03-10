@@ -22,6 +22,7 @@ const typeDefs = gql`
 
   type Query {
     books: [Book]
+    getBookById(id: Int): Book
   }
 
   type Mutation {
