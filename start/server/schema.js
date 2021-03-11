@@ -4,23 +4,43 @@ const typeDefs = gql`
   type Book {
     title: String
     author: Author
+    id: Int
   }
 
   type Author {
     name: String
   }
 
-  input addABook {
+  input addBook {
     title: String!
     author: String!
   }
 
+  input deleteBook {
+    id: Int!
+  }
+
+  input updateABook {
+    id: Int!
+    title: String!
+    author: String!
+  }
+
+  input getSimilarBooks {
+    title: String
+    author: String
+  }
+
   type Query {
     books: [Book]
+    getBookById(id: Int): Book
+    getSimilarBooks(title: String, author: String): Book
   }
 
   type Mutation {
     addBook(title: String, author: String): Book
+    deleteBook(id: Int): Book
+    updateABook(id: Int, title: String, author: String): Book
   }
 `;
 
