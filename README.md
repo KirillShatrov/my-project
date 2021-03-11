@@ -18,6 +18,13 @@
   }
 }
 
+# Query to find books with similiar titles and authors:
+{
+  getSimilarBooks(title: "Awakening") {
+    title
+  }
+}
+
 # Mutation to add a book:
 mutation {
   addBook(title: "Empire of the Ants", author: "Bernard Werber") {
@@ -30,7 +37,7 @@ mutation {
 
 # Mutation to delete a book:
 mutation {
-  deleteBook(id: 3) {
+  deleteBook(id: 5) {
     id
   }
 }

@@ -26,9 +26,15 @@ const typeDefs = gql`
     author: String!
   }
 
+  input getSimilarBooks {
+    title: String
+    author: String
+  }
+
   type Query {
     books: [Book]
     getBookById(id: Int): Book
+    getSimilarBooks(title: String, author: String): Book
   }
 
   type Mutation {

@@ -13,6 +13,20 @@ var books = [
       name: "Paul Auster",
     },
   },
+  {
+    id: 3,
+    title: "Awakening",
+    author: {
+      name: "Joe Smith",
+    },
+  },
+  {
+    id: 4,
+    title: "City of Tomorrow",
+    author: {
+      name: "Joe Smith",
+    },
+  },
 ];
 
 const getAllBooks = () => {
@@ -45,10 +59,19 @@ const deleteBook = (idToRemove) => {
   return true;
 };
 
+const getSimilarBooks = (title, name) => {
+  const similarBooks = books.filter(
+    (item) =>
+      item.title.indexOf(title) !== -1 || item.author.name.indexOf(name) !== -1
+  );
+  console.log(similarBooks);
+};
+
 module.exports = {
   Query: {
     books: getAllBooks,
     getBookById: (props, args) => getBookById(args.id),
+    getSimilarBooks: (props, args) => getSimilarBooks(args.title, args.author),
   },
   Mutation: {
     addBook: (props, args) => addBook(args.title, args.author),
